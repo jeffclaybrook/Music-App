@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Music App">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#181818">
+    <meta name="theme-color" content="#181818">
+    <meta name="description" content="Music app created by Jeff Claybrook">
+    <title>Music App</title>
+    <style>
+        @font-face {
+            font-display: swap;
+            font-family: 'CircularSp';
+            font-weight: 700;
+            src: url(https://encore.scdn.co/fonts/CircularSp-Bold-fe1cfc14b7498b187c78fa72fb72d148.woff2) format("woff2");
+            unicode-range: U+0000, U+000d, U+0020-007e, U+00a0-017e, U+018f, U+0192, U+01a0-01a1, U+01af-01b0, U+01b5-01b6, U+01c4-01c6, U+01f1-01f3, U+01fa-01ff, U+0218-021b, U+0237, U+0259, U+02bb-02bc, U+02c6-02c7, U+02c9, U+02d8-02dd, U+0300-0301, U+0303, U+0309, U+0323, U+0394, U+03a9, U+03bc, U+03c0, U+1e80-1e85, U+1e8a-1e8b, U+1ea0-1ef9, U+1fd6, U+2007-2008, U+200b, U+2010-2011, U+2013-2014, U+2018-201a, U+201c-201e, U+2020-2022, U+2026, U+2030, U+2032-2033, U+2039-203a, U+2042, U+2044, U+2051, U+2070, U+2074-2079, U+2080-2089, U+20ab-20ac, U+2113, U+2117, U+2122, U+2126, U+2160-2169, U+216c-216f, U+2190-2193, U+2196-2199, U+21a9, U+21b0-21b5, U+21c6, U+2202, U+2206, U+220f, U+2211-2212, U+2215, U+2219-221a, U+221e, U+222b, U+2248, U+2260, U+2264-2265, U+22c5, U+24c5, U+25a0-25a1, U+25af, U+25b2-25b3, U+25ca-25cb, U+25cf, U+262e, U+2713, U+2715, U+2780-2788, U+e000, U+e002, U+f6c3, U+fb00-fb04, U+feff, U+ff0c, U+ff0e, U+ff1a-ff1b, U+ffff;
+        }
+
+        @font-face {
+            font-display: swap;
+            font-family: 'CircularSp';
+            font-weight: 400;
+            src: url(https://encore.scdn.co/fonts/CircularSp-Book-4eaffdf96f4c6f984686e93d5d9cb325.woff2) format("woff2");
+            unicode-range: U+0000, U+000d, U+0020-007e, U+00a0-017e, U+018f, U+0192, U+01a0-01a1, U+01af-01b0, U+01b5-01b6, U+01c4-01c6, U+01f1-01f3, U+01fa-01ff, U+0218-021b, U+0237, U+0259, U+02bb-02bc, U+02c6-02c7, U+02c9, U+02d8-02dd, U+0300-0301, U+0303, U+0309, U+0323, U+0394, U+03a9, U+03bc, U+03c0, U+1e80-1e85, U+1e8a-1e8b, U+1ea0-1ef9, U+1fd6, U+2007-2008, U+200b, U+2010-2011, U+2013-2014, U+2018-201a, U+201c-201e, U+2020-2022, U+2026, U+2030, U+2032-2033, U+2039-203a, U+2042, U+2044, U+2051, U+2070, U+2074-2079, U+2080-2089, U+20ab-20ac, U+2113, U+2117, U+2122, U+2126, U+2160-2169, U+216c-216f, U+2190-2193, U+2196-2199, U+21a9, U+21b0-21b5, U+21c6, U+2202, U+2206, U+220f, U+2211-2212, U+2215, U+2219-221a, U+221e, U+222b, U+2248, U+2260, U+2264-2265, U+22c5, U+24c5, U+25a0-25a1, U+25af, U+25b2-25b3, U+25ca-25cb, U+25cf, U+262e, U+2713, U+2715, U+2780-2788, U+e000, U+e002, U+f6c3, U+fb00-fb04, U+feff, U+ff0c, U+ff0e, U+ff1a-ff1b, U+ffff;
+        }
+    </style>
+    <link rel="manifest" href="manifest.json" crossorigin="use-credentials">
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="icon" href="images/icon-192.png" sizes="192x192">
+    <link rel="icon" href="images/icon-512.png" sizes="512x512">
+    <link rel="apple-touch-icon" href="images/icon-192.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="images/icon-512.png" sizes="512x512">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <section id="playlist" class="playlist"></section>
+    </main>
+    <section id="player" class="player">
+        <div class="header">
+            <h4>Playing from Album</h4>
+            <h3 id="album"></h3>
+        </div>
+        <div class="figure">
+            <img id="poster" src="" alt="">
+        </div>
+        <div class="details" id="details">
+            <h1 id="title"></h1>
+            <h2 id="artist"></h2>
+        </div>
+        <div class="progress">
+            <div id="track" class="track">
+                <div id="seek" class="seek"></div>
+            </div>
+            <div class="label">
+                <span id="timer">0:00</span>
+                <span id="duration"></span>
+            </div>
+        </div>
+        <div class="controls">
+            <button id="prev-btn" class="md-btn" aria-label="Prev song" type="button" onclick="prevSong()"><span class="icon prev-icon"></span></button>
+            <button id="play-btn" class="lg-btn" aria-label="Play song" type="button" onclick="togglePlayback()"><span class="icon play-icon"></span></button>
+            <button id="next-btn" class="md-btn" aria-label="Next song" type="button" onclick="nextSong()"><span class="icon next-icon"></span></button>
+        </div>
+        <div class="sub-controls">
+            <button id="share-btn" class="sm-btn" aria-label="Share app" type="button"><span class="icon share-icon"></span></button>
+            <button id="close-btn" class="sm-btn" aria-label="Close player" type="button" onclick="closePlayer()"><span class="icon close-icon"></span></button>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
