@@ -1,0 +1,480 @@
+:root {
+  --black: #181818;
+  --blue: #454755;
+  --white: #ffffff;
+  --gray: #b3b3b3;
+  --green: #1db954;
+  --ripple: rgba(255,255,255,.3);
+  --transparent: rgba(255,255,255,.1);
+  --border: rgba(255,255,255,0.2);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  max-inline-size: 100%;
+  font-size: 16px;
+  background: var(--black);
+  color: var(--white);
+}
+
+body {
+  font-family: 'Inter Tight', system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.material-symbols-rounded {
+  font-variation-settings: 'FILL' 1;
+}
+
+.playlist {
+  inline-size: 100%;
+  display: block;
+  padding-block-end: 4.5em;
+}
+
+.playlist ul {
+  display: flex;
+  flex-direction: column;
+  padding-block: .325em;
+}
+
+.playlist li {
+  display: flex;
+  align-items: center;
+  gap: .5em;
+  padding-block: .25em;
+  padding-inline: .375em;
+  background: var(--black);
+  transition: .15s ease;
+  cursor: pointer;
+}
+
+.playlist li:active {
+  background: rgba(255,255,255,0.05);
+}
+
+.playlist img {
+  object-fit: cover;
+  display: block;
+  block-size: 3em;
+  inline-size: 3em;
+  border-radius: .125em;
+}
+
+.playlist .wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: .25em;
+}
+
+.playlist h2 {
+  font-size: 1.0875em;
+  font-weight: 500;
+  letter-spacing: .02em;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: normal;
+  word-break: break-word;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.playlist h3 {
+  font-size: .925em;
+  font-weight: 400;
+  letter-spacing: .04em;
+  color: var(--gray);
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: normal;
+  word-break: break-word;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.playlist button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray);
+}
+
+.playlist .now-playing h2 {
+  color: var(--green);
+}
+
+.player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  inset-block-end: 0px;
+  inset-inline-start: 0px;
+  inline-size: 100%;
+  max-block-size: 100%;
+  block-size: 4.5em;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: .5em .5em 0 0;
+  transition: all .2s ease;
+}
+
+.player-scrim {
+  display: none;
+  position: fixed;
+  inset: 0px;
+  overflow-y: scroll;
+  overscroll-behavior: contain;
+  block-size: 100%;
+  inline-size: 100%;
+  pointer-events: inherit;
+  visibility: visible;
+  z-index: 5;
+  background: rgba(0,0,0,0.5);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.player .player-scrim::after {
+  content: '';
+  display: block;
+  block-size: 200%;
+  inline-size: 200%;
+}
+
+.player-body {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-inline: .75em;
+  gap: .625em;
+  z-index: 5;
+  block-size: 100%;
+  inline-size: 100%;
+}
+
+.player-header {
+  display: none;
+  text-align: center;
+}
+
+.player-header h4 {
+  font-size: .8em;
+  font-weight: 400;
+  color: var(--gray);
+  letter-spacing: .07em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.player-header h3 {
+  font-size: 1.1875em;
+  font-weight: 500;
+  color: var(--white);
+  letter-spacing: .03em;
+  text-align: center;
+}
+
+.player-figure {
+  aspect-ratio: 1 / 1;
+  inline-size: 3.75em;
+  block-size: 3.75em;
+  display: flex;
+  border-radius: 50%;
+  position: relative;
+}
+
+.player-figure::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  inline-size: .75em;
+  block-size: .75em;
+  border-radius: 50%;
+  border: .0875em solid var(--transparent);
+  background: var(--blue);
+}
+
+.player-figure img {
+  display: block;
+  object-fit: cover;
+  border-radius: inherit;
+  border: .175em solid var(--transparent);
+  animation: rotate 10s linear infinite;
+  animation-play-state: paused;
+}
+
+.playing .player-figure img {
+  animation-play-state: running;
+}
+
+.player-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: .125em;
+  block-size: 100%;
+  cursor: pointer;
+  text-align: start;
+  inline-size: 100%;
+  flex: 1;
+}
+
+.player-details h1 {
+  font-size: 1.1275em;
+  font-weight: 500;
+  letter-spacing: .02em;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: normal;
+  word-break: break-word;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.player-details h2 {
+  font-size: 1em;
+  font-weight: 400;
+  color: var(--gray);
+  letter-spacing: .04em;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: normal;
+  word-break: break-word;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.player-progress {
+  display: none;
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.player-controls .md-btn {
+  display: none;
+}
+
+.player-controls .lg-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+}
+
+.player-controls .lg-btn .material-symbols-rounded {
+  font-size: 3em;
+}
+
+.player-controls button .ripple {
+  display: none;
+}
+
+.player-subcontrols {
+  display: none;
+}
+
+.player.expanded {
+  block-size: 100%;
+  border-radius: 0;
+}
+
+.player.expanded .player-scrim {
+  display: block;
+}
+
+.player.expanded .player-body {
+  flex-direction: column;
+  gap: .875em;
+  padding: 1em;
+  max-inline-size: 1100px;
+  inline-size: 100%;
+  margin-inline: auto;
+}
+
+.player.expanded .player-header {
+  display: flex;
+  flex-direction: column;
+  gap: .125em;
+}
+
+.player.expanded .player-figure {
+  inline-size: 275px;
+  block-size: 275px;
+}
+
+.player.expanded .player-figure::after {
+  inline-size: 2em;
+  block-size: 2em;
+  border: .2em solid var(--transparent);
+}
+
+.player.expanded .player-figure img {
+  border: .3em solid var(--transparent);
+}
+
+.player.expanded .player-details {
+  cursor: default;
+}
+
+.player.expanded .player-details h1 {
+  font-size: 1.5em;
+}
+
+.player.expanded .player-details h2 {
+  font-size: 1em;
+}
+
+.player.expanded .player-progress {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+  inline-size: 100%;
+  position: relative;
+}
+
+.player.expanded .track {
+  background: var(--transparent);
+  width: 100%;
+  block-size: .1875em;
+  border-radius: .75em;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.player.expanded .seek {
+  background: var(--white);
+  width: 0%;
+  block-size: 100%;
+  border-radius: .75em;
+  transition: width 0.1s linear;
+}
+
+.player.expanded .label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.player.expanded .label span {
+  font-size: .875em;
+  font-weight: 400;
+  color: var(--gray);
+  font-family: inherit;
+}
+
+.player.expanded .player-controls {
+  gap: 1.75em;
+}
+
+.player.expanded .player-controls .md-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 4.5em;
+  block-size: 4.5em;
+  color: var(--white);
+  background: var(--transparent);
+  border-radius: 50%;
+}
+
+.player.expanded .player-controls .md-btn .material-symbols-rounded {
+  font-size: 2.5em;
+}
+
+.player.expanded .player-controls .lg-btn {
+  inline-size: 6em;
+  block-size: 6em;
+  background: var(--transparent);
+  border-radius: 50%;
+}
+
+.player.expanded .player-controls button .ripple {
+  position: absolute;
+  transform: scale(0);
+  display: block;
+  border-radius: 50%;
+  animation: ripple 150ms linear;
+  background: var(--ripple);
+}
+
+.player.expanded .player-subcontrols {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  inline-size: 100%;
+}
+
+.player.expanded .player-subcontrols .sm-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 2em;
+  block-size: 2em;
+  color: var(--gray);
+}
+
+.player.expanded .player-subcontrols p {
+    transform: scale(0);
+}
+
+@keyframes rotate {
+  from {
+      transform: rotate(0deg)
+  }
+  to {
+      transform: rotate(360deg)
+  }
+}
+
+@keyframes ripple {
+  to {
+      transform: scale(4);
+      opacity: 0;
+  }
+}
