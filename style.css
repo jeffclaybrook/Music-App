@@ -4,9 +4,9 @@
   --white: #ffffff;
   --gray: #b3b3b3;
   --green: #1db954;
-  --ripple: rgba(255,255,255,.3);
-  --transparent: rgba(255,255,255,.1);
-  --border: rgba(255,255,255,0.2);
+  --ripple: rgba(255, 255, 255, .3);
+  --transparent: rgba(255, 255, 255, .1);
+  --border: rgba(255, 255, 255, 0.2);
 }
 
 * {
@@ -83,7 +83,7 @@ button {
 }
 
 .playlist li:active {
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .playlist img {
@@ -167,7 +167,7 @@ button {
   pointer-events: inherit;
   visibility: visible;
   z-index: 5;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -343,8 +343,8 @@ button {
 }
 
 .player.expanded .player-figure {
-  inline-size: 275px;
-  block-size: 275px;
+  inline-size: 250px;
+  block-size: 250px;
 }
 
 .player.expanded .player-figure::after {
@@ -416,8 +416,8 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  inline-size: 4.5em;
-  block-size: 4.5em;
+  inline-size: 4em;
+  block-size: 4em;
   color: var(--white);
   background: var(--transparent);
   border-radius: 50%;
@@ -428,8 +428,8 @@ button {
 }
 
 .player.expanded .player-controls .lg-btn {
-  inline-size: 6em;
-  block-size: 6em;
+  inline-size: 5em;
+  block-size: 5em;
   background: var(--transparent);
   border-radius: 50%;
 }
@@ -460,21 +460,22 @@ button {
 }
 
 .player.expanded .player-subcontrols p {
-    transform: scale(0);
+  transform: scale(0);
 }
 
 @keyframes rotate {
   from {
-      transform: rotate(0deg)
+    transform: rotate(0deg)
   }
+
   to {
-      transform: rotate(360deg)
+    transform: rotate(360deg)
   }
 }
 
 @keyframes ripple {
   to {
-      transform: scale(4);
-      opacity: 0;
+    transform: scale(4);
+    opacity: 0;
   }
 }
