@@ -334,8 +334,6 @@ button {
   justify-items: center;
   gap: 0;
   padding: 1.5em;
-  max-inline-size: 1100px;
-  inline-size: 100%;
   margin-inline: auto;
 }
 
