@@ -2,10 +2,10 @@
   --black: #181818;
   --blue: #454755;
   --white: #ffffff;
-  --gray: #b3b3b3;
   --green: #1db954;
+  --gray: rgba(255, 255, 255, .55);
   --ripple: rgba(255, 255, 255, .3);
-  --transparent: rgba(255, 255, 255, .1);
+  --transparent: rgba(255, 255, 255, .2);
   --border: rgba(255, 255, 255, 0.2);
 }
 
@@ -75,7 +75,7 @@ button {
   display: flex;
   align-items: center;
   gap: .5em;
-  padding-block: .25em;
+  padding-block: .325em;
   padding-inline: .375em;
   background: var(--black);
   transition: .15s ease;
@@ -89,8 +89,8 @@ button {
 .playlist img {
   object-fit: cover;
   display: block;
-  block-size: 3em;
-  inline-size: 3em;
+  block-size: 3.5em;
+  inline-size: 3.5em;
   border-radius: .125em;
 }
 
@@ -102,8 +102,8 @@ button {
 }
 
 .playlist h2 {
-  font-size: 1.0875em;
-  font-weight: 500;
+  font-size: 1.125em;
+  font-weight: 550;
   letter-spacing: .02em;
   display: -webkit-box;
   text-overflow: ellipsis;
@@ -115,8 +115,8 @@ button {
 }
 
 .playlist h3 {
-  font-size: .925em;
-  font-weight: 400;
+  font-size: 1em;
+  font-weight: 450;
   letter-spacing: .04em;
   color: var(--gray);
   display: -webkit-box;
@@ -167,7 +167,7 @@ button {
   pointer-events: inherit;
   visibility: visible;
   z-index: 5;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.3);
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -238,7 +238,7 @@ button {
   object-fit: cover;
   border-radius: inherit;
   border: .175em solid var(--transparent);
-  animation: rotate 10s linear infinite;
+  animation: rotate 12s linear infinite;
   animation-play-state: paused;
 }
 
@@ -328,9 +328,11 @@ button {
 }
 
 .player.expanded .player-body {
-  flex-direction: column;
-  gap: .875em;
-  padding: 1em;
+  display: grid;
+  align-content: space-between;
+  justify-items: center;
+  gap: 0;
+  padding: 1.5em;
   max-inline-size: 1100px;
   inline-size: 100%;
   margin-inline: auto;
@@ -343,8 +345,8 @@ button {
 }
 
 .player.expanded .player-figure {
-  inline-size: 250px;
-  block-size: 250px;
+  inline-size: 325px;
+  block-size: 325px;
 }
 
 .player.expanded .player-figure::after {
@@ -380,7 +382,7 @@ button {
 .player.expanded .track {
   background: var(--transparent);
   width: 100%;
-  block-size: .1875em;
+  block-size: .2em;
   border-radius: .75em;
   position: relative;
   overflow: hidden;
@@ -402,35 +404,33 @@ button {
 }
 
 .player.expanded .label span {
-  font-size: .875em;
-  font-weight: 400;
+  font-size: .925em;
+  font-weight: 550;
   color: var(--gray);
   font-family: inherit;
 }
 
 .player.expanded .player-controls {
-  gap: 1.75em;
+  gap: 2em;
 }
 
 .player.expanded .player-controls .md-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  inline-size: 4em;
-  block-size: 4em;
   color: var(--white);
-  background: var(--transparent);
   border-radius: 50%;
 }
 
 .player.expanded .player-controls .md-btn .material-symbols-rounded {
-  font-size: 2.5em;
+  font-size: 3.5em;
 }
 
 .player.expanded .player-controls .lg-btn {
   inline-size: 5em;
   block-size: 5em;
-  background: var(--transparent);
+  color: var(--black);
+  background: var(--white);
   border-radius: 50%;
 }
 
@@ -454,9 +454,12 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  inline-size: 2em;
-  block-size: 2em;
+
   color: var(--gray);
+}
+
+.player.expanded .player-subcontrols .sm-btn:last-of-type .material-symbols-rounded {
+  font-size: 2.75em;
 }
 
 .player.expanded .player-subcontrols p {

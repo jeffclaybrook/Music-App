@@ -269,7 +269,7 @@ function nowPlaying(songs) {
 
 function loadSong(song) {
     song = data[index];
-    const bg = 'linear-gradient(to bottom, #454755cf 0%, #1c1c1fec 100%)';
+    const bg = 'linear-gradient(to bottom, #454755b5 0%, #1c1c1fd2 100%)';
     audio.src = song.source;
     document.querySelector('.player-header h3').innerText = song.album;
     document.querySelector('.player-figure img').src = song.poster;
