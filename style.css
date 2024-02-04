@@ -152,6 +152,7 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background: var(--black);
   border-radius: .5em .5em 0 0;
   transition: all .2s ease;
 }
