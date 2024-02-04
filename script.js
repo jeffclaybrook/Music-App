@@ -278,7 +278,7 @@ function loadSong(song) {
     document.querySelector('.player-details h2').innerText = song.artist;
     document.querySelector('.player-progress span:nth-of-type(2)').innerText = song.length;
     document.querySelector('.player-progress .seek').style.width = 0;
-    document.querySelector('.player').style.background =
+    document.querySelector('.player-body').style.background =
     `${bg}, url(${song.poster}) no-repeat center center / cover`;
     nowPlaying();
 }
