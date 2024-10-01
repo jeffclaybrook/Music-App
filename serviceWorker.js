@@ -7,9 +7,6 @@ self.addEventListener('install', e => {
     e.waitUntil(
         addResourcesToCache([
             '/',
-            '/index.html',
-            '/style.css',
-            '/script.js',
             '/images/placeholder.webp',
             '/images/image-1.webp',
             '/images/image-2.webp',
