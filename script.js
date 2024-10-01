@@ -250,7 +250,9 @@ function loadPlaylist() {
                 <h2>${title}</h2>
                 <h3>${artist}</h3>
             </div>
-            <button aria-label="More"><i class="material-symbols-rounded">more_vert</i></button>
+            <button aria-label="More">
+             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" height="24px" width="24px" fill="currentColor"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>
+            </button>
         </li>
         `
     }).join('');
@@ -306,14 +308,14 @@ function setProgress(e) {
 
 function playSong() {
     audio.play();
-    document.querySelector('#play-btn .material-symbols-rounded').innerText = 'pause';
+    document.querySelector('#play-btn').innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" height="24px" width="24px" fill="currentColor"><path d="M640-200q-33 0-56.5-23.5T560-280v-400q0-33 23.5-56.5T640-760q33 0 56.5 23.5T720-680v400q0 33-23.5 56.5T640-200Zm-320 0q-33 0-56.5-23.5T240-280v-400q0-33 23.5-56.5T320-760q33 0 56.5 23.5T400-680v400q0 33-23.5 56.5T320-200Z"/></svg>';
     document.querySelector('.player').classList.add('playing');
     isPlaying = true;
 }
 
 function pauseSong() {
     audio.pause()
-    document.querySelector('#play-btn .material-symbols-rounded').innerText = 'play_arrow';
+    document.querySelector('#play-btn').innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" height="24px" width="24px" fill="currentColor"><path d="M320-273v-414q0-17 12-28.5t28-11.5q5 0 10.5 1.5T381-721l326 207q9 6 13.5 15t4.5 19q0 10-4.5 19T707-446L381-239q-5 3-10.5 4.5T360-233q-16 0-28-11.5T320-273Z"/></svg>';
     document.querySelector('.player').classList.remove('playing');
     isPlaying = false;
 }
